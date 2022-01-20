@@ -1,0 +1,80 @@
+#: import utils kivy.utils
+#: import Factory kivy.factory.Factory
+
+<MyPopup@Popup>
+
+    size_hint: (0.85, 0.5)
+    pos_hint: {'top': 0.9}
+    title: 'About Us'
+
+    Label:
+        text: 'This app was developed by 7XDevs. If  \n you want to contact our developer, \n feel free to contact us through emails, \n facebook or twitter. \n \n Email: \n bashyalprabesh.12@gmail.com \n \n Facebook: \n www.facebook.com/prabesh.bashyal.7/ \n \n Twitter:  \n www.twitter.com/prabeshb1'
+
+<MyLayout>
+    data: data
+    BoxLayout:
+        size: root.width, root.height
+        padding: 10
+        spacing: 10
+        orientation: "vertical"
+
+        Button:
+            size_hint: (.1, .1)
+            text: '>>'
+            background_normal: ''
+            background_color: utils.get_color_from_hex("#51492F")
+            on_release: Factory.MyPopup().open()
+
+        TextInput:
+            id: data
+            size_hint: (1, 0.5)
+            font_size: 30
+            halign: 'right'
+            multiline: False
+
+        GridLayout:
+            spacing: 10
+            rows: 2
+            cols: 2
+
+            Button:
+                text: "Decimal"
+                font_size: 20
+                size_hint: (.2,.2)
+                background_color: (169/255, 169/255, 169/255, 1)
+                on_press: root.decimal()
+                background_normal: ''
+                background_color: utils.get_color_from_hex("#1E90FF")
+                color: (0, 0, 0, 1)
+
+
+            Button:
+                text: "Binary"
+                font_size: 20
+                size_hint: (.2,.2)
+                background_color: (169/255, 169/255, 169/255, 1)
+                on_press: root.binary()
+                background_normal: ''
+                background_color: utils.get_color_from_hex("#1EFF90")
+                color: (0, 0, 0, 1)
+
+            Button:
+                text: "Octal"
+                font_size: 20
+                size_hint: (.2,.2)
+                background_color: (169/255, 169/255, 169/255, 1)
+                on_press: root.octal()
+                background_normal: ''
+                background_color: utils.get_color_from_hex("#FF1E90")
+                color: (0, 0, 0, 1)
+
+            Button:
+                text: "Hexadecimal"
+                font_size: 20
+                size_hint: (.2,.2)
+                background_color: (169/255, 169/255, 169/255, 1)
+                on_press: root.hexadecimal()
+                background_normal: ''
+                background_color: utils.get_color_from_hex("#FF901E")
+                color: (0, 0, 0, 1)
+
