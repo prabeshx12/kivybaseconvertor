@@ -32,19 +32,25 @@ class MyLayout(Widget):
             if 'DEC' in info:
                 self.data.text = str(int(info.replace('DEC', '')))
             elif 'BIN' in info:
-                piece = info.replace('BIN', '')
-                length = len(piece)
-                answer = 0
-                for a in range(len(piece)):
-                    answer += int(piece[length - (a+1)]) * (2**a)
-                self.data.text = str(answer)
+                if '2' in info or '3' in info or '4' in info or '5' in info or '6' in info or '7' in info or '8' in info or '9' in info:
+                    self.data.text = 'Error'
+                else:
+                    piece = info.replace('BIN', '')
+                    length = len(piece)
+                    answer = 0
+                    for a in range(len(piece)):
+                        answer += int(piece[length - (a+1)]) * (2**a)
+                    self.data.text = str(answer)
             elif 'OCT' in info:
                 piece = info.replace('OCT', '')
-                length = len(piece)
-                answer = 0
-                for a in range(len(piece)):
-                    answer += int(piece[length - (a + 1)]) * (8 ** a)
-                self.data.text = str(answer)
+                if '8' in info or '9' in info:
+                    self.data.text = "Error"
+                else:
+                    length = len(piece)
+                    answer = 0
+                    for a in range(len(piece)):
+                        answer += int(piece[length - (a + 1)]) * (8 ** a)
+                    self.data.text = str(answer)
             elif 'HEX' in info:
                 piece = info.replace('HEX', '')
                 length = len(piece)
@@ -63,7 +69,12 @@ class MyLayout(Widget):
         info = self.data.text.upper()
         try:
             if 'BIN' in info:
-                self.data.text = str(int(info.replace('BIN', '')))
+                value = str(int(info.replace('BIN', '')))
+                if '2' in value or '3' in value or '4' in value or '5' in value or '6' in value or '7' in value or '8' in value or '9' in value:
+                    self.data.text = 'Error'
+                else:
+                    self.data.text = value
+
             elif 'DEC' in info:
                 piece = int(info.replace('DEC', ''))
                 part = ''
@@ -73,15 +84,18 @@ class MyLayout(Widget):
                 self.data.text = part
             elif 'OCT' in info:
                 piece = info.replace('OCT', '')
-                length = len(piece)
-                answer = 0
-                for a in range(len(piece)):
-                    answer += int(piece[length - (a + 1)]) * (8 ** a)
-                part = ''
-                while answer > 0:
-                    part = str(answer % 2) + part
-                    answer = answer // 2
-                self.data.text = part
+                if '8' in info or '9' in info:
+                    self.data.text = "Error"
+                else:
+                    length = len(piece)
+                    answer = 0
+                    for a in range(len(piece)):
+                        answer += int(piece[length - (a + 1)]) * (8 ** a)
+                    part = ''
+                    while answer > 0:
+                        part = str(answer % 2) + part
+                        answer = answer // 2
+                    self.data.text = part
             elif 'HEX' in info:
                 piece = info.replace('HEX', '')
                 length = len(piece)
@@ -104,7 +118,11 @@ class MyLayout(Widget):
         info = self.data.text.upper()
         try:
             if 'OCT' in info:
-                self.data.text = str(int(info.replace('OCT', '')))
+                value = str(int(info.replace('OCT', '')))
+                if '8' in value or '9' in value:
+                    self.data.text = "Error"
+                else:
+                    self.data.text = value
             elif 'DEC' in info:
                 piece = int(info.replace('DEC', ''))
                 part = ''
@@ -114,15 +132,18 @@ class MyLayout(Widget):
                 self.data.text = part
             elif 'BIN' in info:
                 piece = info.replace('BIN', '')
-                length = len(piece)
-                answer = 0
-                for a in range(len(piece)):
-                    answer += int(piece[length - (a + 1)]) * (2 ** a)
-                part = ''
-                while answer > 0:
-                    part = str(answer % 8) + part
-                    answer = answer // 8
-                self.data.text = part
+                if '2' in info or '3' in info or '4' in info or '5' in info or '6' in info or '7' in info or '8' in info or '9' in info:
+                    self.data.text = 'Error'
+                else:
+                    length = len(piece)
+                    answer = 0
+                    for a in range(len(piece)):
+                        answer += int(piece[length - (a + 1)]) * (2 ** a)
+                    part = ''
+                    while answer > 0:
+                        part = str(answer % 8) + part
+                        answer = answer // 8
+                    self.data.text = part
             elif 'HEX' in info:
                 piece = info.replace('HEX', '')
                 length = len(piece)
@@ -156,28 +177,34 @@ class MyLayout(Widget):
                 self.data.text = part
             elif 'BIN' in info:
                 piece = info.replace('BIN', '')
-                length = len(piece)
-                answer = 0
-                for a in range(len(piece)):
-                    answer += int(piece[length - (a + 1)]) * (2 ** a)
-                part = ''
-                while answer > 0:
-                    portion = str(answer % 16)
-                    part = char_set_one.get(portion, portion) + part
-                    answer = answer // 16
-                self.data.text = part
+                if '2' in info or '3' in info or '4' in info or '5' in info or '6' in info or '7' in info or '8' in info or '9' in info:
+                    self.data.text = 'Error'
+                else:
+                    length = len(piece)
+                    answer = 0
+                    for a in range(len(piece)):
+                        answer += int(piece[length - (a + 1)]) * (2 ** a)
+                    part = ''
+                    while answer > 0:
+                        portion = str(answer % 16)
+                        part = char_set_one.get(portion, portion) + part
+                        answer = answer // 16
+                    self.data.text = part
             elif 'OCT' in info:
                 piece = info.replace('OCT', '')
-                length = len(piece)
-                answer = 0
-                for a in range(len(piece)):
-                    answer += int(piece[length - (a + 1)]) * (8 ** a)
-                part = ''
-                while answer > 0:
-                    portion = str(answer % 16)
-                    part = char_set_one.get(portion, portion) + part
-                    answer = answer // 16
-                self.data.text = part
+                if '8' in info or '9' in info:
+                    self.data.text = "Error"
+                else:
+                    length = len(piece)
+                    answer = 0
+                    for a in range(len(piece)):
+                        answer += int(piece[length - (a + 1)]) * (8 ** a)
+                    part = ''
+                    while answer > 0:
+                        portion = str(answer % 16)
+                        part = char_set_one.get(portion, portion) + part
+                        answer = answer // 16
+                    self.data.text = part
             else:
                 self.data.text = "Error"
         except:
