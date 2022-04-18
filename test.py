@@ -2,7 +2,6 @@ from kivy.app import App
 from kivy.core.window import Window
 from kivy.uix.widget import Widget
 
-Window.size = (400, 540)
 Window.clearcolor = (169/255, 169/255, 169/255, 1)
 
 char_set_one = {
