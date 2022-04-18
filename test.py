@@ -29,7 +29,9 @@ class MyLayout(Widget):
     def decimal(self):
         info = self.data.text.upper()
         try:
-            if 'DEC' in info:
+            if '-' in info:
+                self.data.text = "Error"
+            elif 'DEC' in info:
                 self.data.text = str(int(info.replace('DEC', '')))
             elif 'BIN' in info:
                 if '2' in info or '3' in info or '4' in info or '5' in info or '6' in info or '7' in info or '8' in info or '9' in info:
@@ -68,7 +70,9 @@ class MyLayout(Widget):
     def binary(self):
         info = self.data.text.upper()
         try:
-            if 'BIN' in info:
+            if '-' in info:
+                self.data.text = "Error"
+            elif 'BIN' in info:
                 value = str(int(info.replace('BIN', '')))
                 if '2' in value or '3' in value or '4' in value or '5' in value or '6' in value or '7' in value or '8' in value or '9' in value:
                     self.data.text = 'Error'
@@ -117,7 +121,9 @@ class MyLayout(Widget):
     def octal(self):
         info = self.data.text.upper()
         try:
-            if 'OCT' in info:
+            if '-' in info:
+                self.data.text = "Error"
+            elif 'OCT' in info:
                 value = str(int(info.replace('OCT', '')))
                 if '8' in value or '9' in value:
                     self.data.text = "Error"
@@ -165,7 +171,9 @@ class MyLayout(Widget):
     def hexadecimal(self):
         info = self.data.text.upper()
         try:
-            if 'HEX' in info:
+            if '-' in info:
+                self.data.text = "Error"
+            elif 'HEX' in info:
                 self.data.text = info.replace('HEX', '')
             elif 'DEC' in info:
                 piece = int(info.replace('DEC', ''))
