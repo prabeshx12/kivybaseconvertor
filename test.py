@@ -2,7 +2,7 @@ from kivy.app import App
 from kivy.core.window import Window
 from kivy.uix.widget import Widget
 
-Window.clearcolor = (169/255, 169/255, 169/255, 1)
+Window.clearcolor = (169 / 255, 169 / 255, 169 / 255, 1)
 
 char_set_one = {
     '10': 'A',
@@ -40,7 +40,7 @@ class MyLayout(Widget):
                     length = len(piece)
                     answer = 0
                     for a in range(len(piece)):
-                        answer += int(piece[length - (a+1)]) * (2**a)
+                        answer += int(piece[length - (a + 1)]) * (2 ** a)
                     self.data.text = str(answer)
             elif 'OCT' in info:
                 piece = info.replace('OCT', '')
@@ -173,7 +173,12 @@ class MyLayout(Widget):
             if '-' in info:
                 self.data.text = "Error"
             elif 'HEX' in info:
-                self.data.text = info.replace('HEX', '')
+                if 'G' in info or 'H' in info or 'I' in info or 'J' in info or 'K' in info or 'L' in info or 'M' in info or 'N' in info \
+                        or 'O' in info or 'P' in info or 'Q' in info or 'R' in info or 'S' in info or 'T' in info or 'U' in info or 'V' in info \
+                        or 'W' in info or 'X' in info or 'Y' in info or 'Z' in info:
+                    self.data.text = "Error"
+                else:
+                    self.data.text = info.replace('HEX', '')
             elif 'DEC' in info:
                 piece = int(info.replace('DEC', ''))
                 part = ''
